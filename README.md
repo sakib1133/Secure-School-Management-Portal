@@ -468,13 +468,16 @@ Different roles required different session durations without breaking the UX. So
 ---
 
 ## Screenshots
+| Conatainer |
+| ![Jenkins](container.png) |
 
-| School Management App | Jenkins Pipeline |
-|---|---|
-| ![App](login.png) | ![Jenkins](screenshots/jenkins-dashboar.png) |
+| School Management App |
+| ![login Dashboard](login.png) |
+| ![admin Dashboard](dashboard.png) |
 
 | Jenkins Pipeline |
-| ![Jenkins](jenkins-dashboar.png) 
+| ![Jenkins](jenkins-dashboard.png) |
+
 | Grafana Dashboard |
 |---|---|
 | ![Grafana](grafana.png) 
