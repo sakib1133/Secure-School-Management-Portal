@@ -2,7 +2,7 @@
 
 A production-grade, secure web application for educational institutions — fully containerized, monitored, and deployed through an automated CI/CD pipeline.
 
-> Built end-to-end by **Mohd Sakib Malik** — [sakibmalik5347@gmail.com](mailto:sakibmalik5347@gmail.com) · [GitHub](https://github.com/sakib1133) · [LinkedIn](linkedin.com/in/mohd-sakib-malik-97ab4a283/)
+> Built end-to-end by **Mohd Sakib Malik** — [sakibmalik5347@gmail.com](mailto:sakibmalik5347@gmail.com) · [GitHub](https://github.com/sakib1133) · [LinkedIn](https://linkedin.com/in/mohd-sakib-malik-97ab4a283)
 
 ---
 
