@@ -19,29 +19,42 @@ stages {
         }
     }
 
-    stage('Verify Application') {
+    stage('Verify Environment') {
         steps {
             dir('App') {
-                sh 'node --version'
-                sh 'npm --version'
+                sh 'node -v'
+                sh 'npm -v'
+            }
+        }
+    }
+
+    stage('Application Check') {
+        steps {
+            dir('App') {
+                sh 'test -f package.json'
+                echo 'package.json found'
             }
         }
     }
 
     stage('Build') {
         steps {
-            echo 'No build step required for Express application'
+            echo 'No build step required for this Express application'
         }
     }
 }
 
 post {
     success {
-        echo 'Pipeline completed successfully'
+        echo 'Pipeline completed successfully!'
     }
 
     failure {
-        echo 'Pipeline failed'
+        echo 'Pipeline failed!'
+    }
+
+    always {
+        echo 'Pipeline execution finished.'
     }
 }
 ```
