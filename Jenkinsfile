@@ -6,7 +6,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                url: 'https://github.com/yourusername/school-management-devops-project.git'
+                url: 'https://github.com/sakib1133/school-management-devops-project.git'
             }
         }
 
