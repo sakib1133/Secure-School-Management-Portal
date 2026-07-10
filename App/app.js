@@ -295,12 +295,12 @@ const WAF_CONFIG = {
 const ANTI_PHISHING_CONFIG = {
     ENABLED: true,
     BLOCK_MODE: true, // true = block, false = log only
-    ALLOWED_DOMAINS: process.env.ALLOWED_DOMAINS ? 
-        process.env.ALLOWED_DOMAINS.split(',') : 
-        ['localhost', '127.0.0.1', 'localhost:3000', '127.0.0.1:3000', 'localhost:3443', '127.0.0.1:3443', 'school-management-dit2.onrender.com', 'onrender.com'],
+    ALLOWED_DOMAINS: process.env.ALLOWED_DOMAINS ?
+        process.env.ALLOWED_DOMAINS.split(',') :
+        ['localhost', '127.0.0.1', 'localhost:3000', '127.0.0.1:3000', 'localhost:3443', '127.0.0.1:3443', 'school-management-dit2.onrender.com', 'secure-school-management-project.onrender.com', 'onrender.com'],
     ALLOWED_ORIGINS: process.env.CORS_ORIGINS ?
         process.env.CORS_ORIGINS.split(',') :
-        ['http://localhost:3000', 'http://localhost:10000', 'http://127.0.0.1:3000', 'https://localhost:3000', 'https://127.0.0.1:3000', 'https://localhost:3443', 'https://127.0.0.1:3443', 'https://school-management-dit2.onrender.com'],
+        ['http://localhost:3000', 'http://localhost:10000', 'http://127.0.0.1:3000', 'https://localhost:3000', 'https://127.0.0.1:3000', 'https://localhost:3443', 'https://127.0.0.1:3443', 'https://school-management-dit2.onrender.com', 'https://secure-school-management-project.onrender.com'],
     CHECK_REFERER: true,
     CHECK_ORIGIN: true,
     CHECK_HOST: true,
@@ -1074,14 +1074,57 @@ function cleanupWAF() {
 }
 
 // Anti-Phishing Functions
+function normalizeHost(host) {
+    if (!host || typeof host !== 'string') return '';
+    const trimmed = host.trim();
+    const withoutBrackets = trimmed.replace(/^\[|\]$/g, '');
+    return withoutBrackets.split(':')[0].toLowerCase();
+}
+
+function isDomainAllowed(domain, allowedValue) {
+    if (!domain || !allowedValue) return false;
+    const normalizedDomain = normalizeHost(domain);
+    const normalizedAllowed = allowedValue.trim().toLowerCase();
+
+    if (normalizedDomain === normalizedAllowed) {
+        return true;
+    }
+
+    if (normalizedAllowed.startsWith('*.')) {
+        const wildcardRoot = normalizedAllowed.slice(2);
+        return normalizedDomain === wildcardRoot || normalizedDomain.endsWith(`.${wildcardRoot}`);
+    }
+
+    if (normalizedAllowed.includes('.') && normalizedDomain.endsWith(`.${normalizedAllowed}`)) {
+        return true;
+    }
+
+    return false;
+}
+
 function isValidDomain(domain) {
     if (!domain) return false;
-    return ANTI_PHISHING_CONFIG.ALLOWED_DOMAINS.includes(domain.toLowerCase());
+    return ANTI_PHISHING_CONFIG.ALLOWED_DOMAINS.some((allowedDomain) => isDomainAllowed(domain, allowedDomain));
 }
 
 function isValidOrigin(origin) {
     if (!origin) return false;
-    return ANTI_PHISHING_CONFIG.ALLOWED_ORIGINS.includes(origin.toLowerCase());
+
+    try {
+        const parsed = new URL(origin);
+        return ANTI_PHISHING_CONFIG.ALLOWED_ORIGINS.some((allowedOrigin) => {
+            const normalizedAllowed = allowedOrigin.trim().toLowerCase();
+            if (!normalizedAllowed) return false;
+            if (normalizedAllowed.startsWith('*.')) {
+                const hostToCheck = `${parsed.hostname}${parsed.port ? `:${parsed.port}` : ''}`;
+                const wildcardRoot = normalizedAllowed.slice(2);
+                return hostToCheck === wildcardRoot || hostToCheck.endsWith(`.${wildcardRoot}`);
+            }
+            return origin.toLowerCase() === normalizedAllowed;
+        });
+    } catch (e) {
+        return false;
+    }
 }
 
 function detectSuspiciousDomain(domain) {
@@ -2270,7 +2313,8 @@ const allowedOrigins = [
     'http://127.0.0.1:3000',
     'https://localhost:3443',
     'https://127.0.0.1:3443',
-    'https://school-management-dit2.onrender.com'
+    'https://school-management-dit2.onrender.com',
+    'https://secure-school-management-project.onrender.com'
 ];
 
 const corsOptions = {
