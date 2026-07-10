@@ -135,10 +135,10 @@ class SecurityManager {
         }
 
         // Validate domain
-        const allowedDomains = ['localhost', '127.0.0.1'];
+        const allowedDomains = ['localhost', '127.0.0.1', 'secure-school-management-project.onrender.com', 'school-management-dit2.onrender.com'];
         const currentDomain = location.hostname;
         
-        if (!allowedDomains.includes(currentDomain) && !currentDomain.endsWith('.school.edu')) {
+        if (!allowedDomains.includes(currentDomain) && !currentDomain.endsWith('.school.edu') && !currentDomain.endsWith('.onrender.com')) {
             this.showSecurityAlert('Warning: You may be on a phishing site. Verify the URL before entering credentials.');
         }
 

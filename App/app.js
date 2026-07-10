@@ -3457,22 +3457,25 @@ setInterval(() => {
 
 // Login endpoint
 app.post('/api/login', async (req, res) => {
-    const { username, password, role } = req.body;
+    const username = String(req.body.username || '').trim();
+    const password = String(req.body.password || '');
+    const role = String(req.body.role || '').trim().toLowerCase();
     const clientIP = req.ip || req.connection.remoteAddress || 'unknown';
-    
-    if (!username || !password || !role) {
-        logLoginAttempt(username || 'unknown', role || 'unknown', false, 'Missing credentials', clientIP);
+    const allowedRoles = ['admin', 'teacher', 'student'];
+
+    if (!username || !password || !role || !allowedRoles.includes(role)) {
+        logLoginAttempt(username || 'unknown', role || 'unknown', false, 'Missing or invalid credentials', clientIP);
         return res.status(400).json({ 
             status: 'failed', 
-            message: 'Username, password, and role are required' 
+            message: 'Username, password, and valid role are required' 
         });
     }
     
-    const query = 'SELECT * FROM users WHERE username = ? AND role = ?';
+    const query = 'SELECT * FROM users WHERE lower(username) = ? AND role = ?';
     
-    console.log("Login attempt:", { username, role });
+    console.log('Login attempt:', { username, role });
     
-    db.get(query, [username, role], async (err, user) => {
+    db.get(query, [username.toLowerCase(), role], async (err, user) => {
         // Security: Never log password information - only log authentication events
         if (user) {
             console.log(`[AUTH] Login attempt for user: ${username} (${role}) - user found`);

@@ -1028,25 +1028,6 @@
             path: 'https://assets3.lottiefiles.com/packages/lf20_hu9cd9.json'
         });
         
-        // Test session warning in console
-        console.log('To test session warning, run in console: document.getElementById("sessionWarning").classList.add("show")');
-        console.log('To hide it: document.getElementById("sessionWarning").classList.remove("show")');
-        
-        // Auto-test session warning on page load (blinks for 5 seconds then disappears)
-        setTimeout(() => {
-            const warning = document.getElementById('sessionWarning');
-            if (warning) {
-                warning.classList.add('show');
-                console.log('Session warning: Blinking for 5 seconds then will disappear');
-                
-                // Auto-hide after 5 seconds
-                setTimeout(() => {
-                    warning.classList.remove('show');
-                    console.log('Session warning: Hidden after 5 seconds');
-                }, 5000);
-            }
-        }, 1000);
-        
         // Validation Alert Functions
         function showValidationAlert(message) {
             const alert = document.getElementById('validationAlert');
