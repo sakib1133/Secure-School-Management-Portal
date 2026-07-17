@@ -242,3 +242,11 @@ Distinct user experiences with secure permission management:
 **⭐ Star this repository if it helped you!**
 
 **🔄 Fork and contribute to make it better!**
+
+## Author
+
+**Mohd Sakib Malik**
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://www.linkedin.com/in/mohd-sakib-malik-97ab4a283/)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-black)](https://github.com/sakib1133)
+[![LeetCode](https://img.shields.io/badge/LeetCode-Profile-orange)](https://leetcode.com/u/sakib_malik79/)
