@@ -1,6 +1,6 @@
 # 🎓 School Management System
 
-A comprehensive, enterprise-grade school management portal with advanced security features, AI-powered assistance, and complete fee management. This system demonstrates industry best practices in security architecture, role-based access control, and integrated monitoring.
+A comprehensive, enterprise-grade school management portal with advanced security features, and complete fee management. This system demonstrates industry best practices in security architecture, role-based access control, and integrated monitoring.
 
 🔗 **[Live Demo](https://school-management-dit2.onrender.com/)** · **[GitHub Repo](https://github.com/sakib1133/Secure-School-Management-Porta)**
 
@@ -10,7 +10,6 @@ A comprehensive, enterprise-grade school management portal with advanced securit
 This project implements a full-featured school management system with:
 - **Role-Based Access Control** for Admin, Teacher, and Student users
 - **Enterprise-Grade Security** with multi-layered protection mechanisms
-- **AI-Powered Chatbot** with NLP, sentiment analysis, and multi-language support
 - **Complete Fee Management** with Razorpay integration and OTP verification
 - **Integrated Monitoring Stack** with Prometheus, Grafana, and Node Exporter
 - **Docker Compose** for containerized deployment
@@ -87,12 +86,6 @@ This project implements a full-featured school management system with:
 - **JWT** - Token-based authentication
 - **MFA/2FA** - Multi-factor authentication
 
-### AI & Chatbot
-- **NLP** - Natural Language Processing
-- **Sentiment Analysis** - Emotion detection
-- **Multi-language Support** - English & Hindi
-- **Contextual Learning** - Smart responses
-
 ### Monitoring
 - **Prometheus** - Metrics collection and storage
 - **Grafana** - Data visualization and dashboards
@@ -144,9 +137,9 @@ This project implements a full-featured school management system with:
    - **Node Exporter**: http://localhost:9100
    - **Jenkins**: http://localhost:8081
 
-### Default Credentials
-- **Admin**: Username: `admin`, Password: (Set via ADMIN_PASSWORD env var)
-- **Teacher/Student**: Created via admin dashboard
+5. **Default Credentials**
+- **Admin**: Username: `admin`, Password: admin@321/admin@123
+- **Teacher/Student**: Make your own udner stundent/teacher management after    admin login
 
 ## � Key Strengths
 
@@ -160,16 +153,7 @@ Multi-layered protection system with defense-in-depth approach:
 - **AES-256-CBC Encryption**: All sensitive data (names, emails, phone, addresses) encrypted at rest
 - **Comprehensive Logging**: Security events logged to dedicated files with notification alerts via Email, Slack, Discord, Teams
 
-### 2. AI-Powered Chatbot
-Advanced natural language processing for intelligent assistance:
-- **NLP Intent Detection**: Recognizes user queries with fuzzy matching and contextual understanding
-- **Sentiment Analysis**: Detects user emotions and adapts responses accordingly
-- **Multi-language Support**: English and Hindi language capabilities
-- **Contextual Learning**: Remembers conversation history and provides personalized responses
-- **Smart Suggestions**: Proactively offers relevant actions based on user intent
-- **Role-Based Responses**: Different response styles for Admin, Teacher, and Student roles
-
-### 3. Complete Fee Management
+### 2. Complete Fee Management
 End-to-end payment system with verification workflow:
 - **Razorpay Integration**: Secure online payments with order creation and signature verification
 - **OTP Verification**: Email-based OTP for both Razorpay and manual payments
@@ -179,7 +163,7 @@ End-to-end payment system with verification workflow:
 - **Receipt Generation**: Digital receipts for successful payments
 - **School Payment Details**: Configurable UPI ID, QR code, bank details for manual payments
 
-### 4. Role-Based Access Control
+### 3. Role-Based Access Control
 Distinct user experiences with secure permission management:
 - **Admin Dashboard**: Complete system management (students, teachers, classes, fees, payments)
 - **Teacher Dashboard**: Profile management, assigned students, classes, assignments, results
@@ -197,18 +181,6 @@ Production-ready observability with real-time metrics:
 - **Alerting**: Configurable alerting rules for proactive monitoring
 - **Log Aggregation**: Centralized logging for all system events
 
-##  Monitoring Setup
-
-### Prometheus Configuration
-- **Configuration File**: `monitoring/prometheus.yml`
-- **Scrape Interval**: 15 seconds
-- **Targets**: Node.js App, Node Exporter
-
-### Grafana Dashboards
-- **System Metrics**: CPU, Memory, Disk usage
-- **Application Metrics**: Request rates, Response times, Error rates
-- **Security Metrics**: IPS blocks, WAF alerts, Anomaly detection
-- **Business KPIs**: Student enrollments, Fee collections, Active sessions
 
 ## 🔧 Development
 
@@ -256,22 +228,6 @@ npm start
 npm run dev
 ```
 
-## 🔄 CI/CD Pipeline
-
-### Jenkins Pipeline (Ready for Implementation)
-The Jenkinsfile is ready for implementation with the following stages:
-1. **Code Checkout** - Pull latest code from repository
-2. **Security Scan** - Vulnerability assessment and dependency checking
-3. **Build** - Create Docker image
-4. **Test** - Run automated tests (when implemented)
-5. **Deploy** - Push to registry and deploy
-
-### Render Deployment
-The project includes `render.yaml` for easy deployment to Render cloud platform:
-- Automatic builds from Git repository
-- Environment variable management
-- Health check configuration
-- Free tier support with database persistence
 
 ## 🌐 Deployment
 
@@ -300,20 +256,6 @@ git push origin main
 # Automatic deployment will trigger on push
 ```
 
-## 📈 Monitoring & Alerting
-
-### Key Metrics
-- **Application**: Response time, Error rate, Throughput, Active sessions
-- **Security**: IPS blocks, WAF alerts, Anomaly detection, Failed logins
-- **System**: CPU usage, Memory usage, Disk I/O, Network traffic
-- **Business**: Student enrollments, Fee collections, Payment status
-
-### Alerting Rules
-- High CPU usage (>80%)
-- Memory pressure (>90%)
-- Application errors (>5%)
-- Security alerts (IPS blocks, WAF detections)
-- Service downtime
 
 ## 🔒 Security Features
 
@@ -337,71 +279,6 @@ git push origin main
 - **CORS Protection**: Whitelisted origins only
 - **Rate Limiting**: Configurable rate limits per endpoint
 
-### Logging & Monitoring
-- **Comprehensive Logging**: All security events logged to dedicated files
-- **Notification Alerts**: Email, Slack, Discord, Teams integration
-- **Session Tracking**: Activity monitoring and expiry warnings
-- **Audit Trail**: Complete audit trail for all user actions
-
-## 📚 API Documentation
-
-### Authentication Endpoints
-- `POST /api/login` - User login with role selection
-- `POST /api/logout` - User logout and session invalidation
-- `POST /api/refresh-token` - Refresh JWT token
-- `GET /api/session-info` - Get current session details
-
-### User Management
-- `GET /api/me` - Get current user profile
-- `PUT /api/admin/profile` - Update admin profile
-- `POST /api/admin/change-password` - Change password
-- `POST /api/2fa/send-otp` - Send 2FA OTP
-- `POST /api/2fa/verify-otp` - Verify 2FA OTP
-
-### Student Management
-- `GET /api/admin/students` - Get all students
-- `POST /api/admin/students` - Create new student
-- `PUT /students/:id` - Update student details
-- `DELETE /students/:id` - Delete student
-- `GET /students/me` - Get student's own profile
-
-### Teacher Management
-- `GET /api/admin/get-teachers` - Get all teachers
-- `POST /api/admin/create-teacher` - Create new teacher
-- `PUT /api/admin/update-teacher/:id` - Update teacher
-- `DELETE /api/admin/delete-teacher/:id` - Delete teacher
-- `GET /api/teacher/profile` - Get teacher's own profile
-
-### Fee Management
-- `POST /api/fees/create` - Assign fee to student
-- `GET /api/fees/student` - Get student's fees
-- `GET /api/fees/all` - Get all fees (admin)
-- `DELETE /api/fees/:id` - Delete fee
-- `POST /api/fees/send-otp` - Send fee OTP
-- `POST /api/fees/verify-otp` - Verify fee OTP
-- `POST /api/fees/mark-paid` - Mark manual payment
-- `GET /api/fees/payments/history` - Get payment history
-
-### Payment System
-- `POST /api/payments/create-order` - Create Razorpay order
-- `POST /api/payments/verify` - Verify Razorpay payment
-- `GET /api/payments/my-payments` - Get user's payments
-- `GET /api/payments/receipt/:paymentId` - Get payment receipt
-- `POST /api/payments/send-otp` - Send payment OTP
-- `POST /api/payments/verify-otp` - Verify payment OTP
-
-### Chatbot Services
-- `POST /api/chatbot` - Internal chatbot interaction
-- `POST /api/login-chatbot` - Login page chatbot
-- `GET /api/admin/chatbot-logs` - Get chatbot logs (admin)
-
-### Admin Endpoints
-- `GET /api/admin/payments` - Get all payments with filters
-- `GET /api/admin/payments/summary` - Get payment summary
-- `GET /api/admin/payment-requests` - Get pending payment requests
-- `POST /api/admin/approve-payment` - Approve manual payment
-- `POST /api/admin/reject-payment` - Reject manual payment
-- `GET /api/admin/session-stats` - Get session statistics
 
 ## 🤝 Contributing
 
@@ -412,23 +289,6 @@ git push origin main
 5. Open a Pull Request
 
 
-
-## 🙋‍♂️ Support
-
-- **Issues**: [GitHub Issues](https://github.com/sakib1133/school-management-system/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/sakib1133/school-management-system/discussions)
-- **Email**: sakibmalik5347@gmail.com
-
-## 🏆 Acknowledgments
-
-- [Express.js](https://expressjs.com/) - Web framework
-- [SQLite](https://www.sqlite.org/) - Database engine
-- [Razorpay](https://razorpay.com/) - Payment gateway
-- [Prometheus](https://prometheus.io/) - Monitoring system
-- [Grafana](https://grafana.com/) - Visualization platform
-- [Docker](https://www.docker.com/) - Container platform
-- [Node.js](https://nodejs.org/) - JavaScript runtime
-
 ## 🎯 Future Enhancements
 
 - [ ] Implement comprehensive unit and integration tests
@@ -436,11 +296,19 @@ git push origin main
 - [ ] Refactor monolithic backend into modular architecture
 - [ ] Implement database migrations system
 - [ ] Add PostgreSQL support for production scalability
-- [ ] Implement automated CI/CD pipeline in Jenkins
 - [ ] Add Kubernetes manifests for orchestration
 - [ ] Implement real-time notifications with WebSockets
 - [ ] Add mobile application support
 - [ ] Implement advanced analytics and reporting
+
+
+
+## 🙋‍♂️ Support
+
+- **Issues**: [GitHub Issues](https://github.com/sakib1133/school-management-system/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/sakib1133/school-management-system/discussions)
+- **Email**: sakibmalik5347@gmail.com
+
 
 ---
 
