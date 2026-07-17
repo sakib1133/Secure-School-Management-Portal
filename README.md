@@ -1,6 +1,7 @@
 # 🎓 School Management System
 
 A comprehensive, enterprise-grade school management portal with advanced security features, AI-powered assistance, and complete fee management. This system demonstrates industry best practices in security architecture, role-based access control, and integrated monitoring.
+
 🔗 **[Live Demo](https://school-management-dit2.onrender.com/)** · **[GitHub Repo](https://github.com/sakib1133/Secure-School-Management-Porta)**
 
 
