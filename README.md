@@ -97,18 +97,51 @@ This project implements a full-featured school management system with:
 - **Jenkins** - CI/CD pipeline (ready for implementation)
 - **Render** - Cloud deployment support
 
-## 🚀 Quick Start
+### 🚀 Quick 
 
-### Prerequisites
+## Project Structure
+```
+├── App/                    # Main application directory
+│   ├── public/             # Frontend files
+│   │   ├── index.html      # Landing page
+│   │   ├── login.html      # Login page with chatbot
+│   │   ├── dashboard.html  # Admin dashboard
+│   │   ├── student/        # Student-specific pages
+│   │   ├── teacher/        # Teacher-specific pages
+│   │   ├── css/            # Stylesheets
+│   │   └── js/             # JavaScript modules
+│   ├── utils/              # Service modules
+│   │   ├── chatbotService.js        # Main chatbot logic
+│   │   ├── navigationChatbotService.js  # Navigation chatbot
+│   │   └── notificationService.js     # Security notifications
+│   ├── prompts/            # AI system prompts
+│   │   ├── admin.txt       # Admin chatbot prompt
+│   │   ├── teacher.txt     # Teacher chatbot prompt
+│   │   └── student.txt     # Student chatbot prompt
+│   ├── data/               # Database storage
+│   ├── logs/               # Application logs
+│   ├── uploads/            # File uploads
+│   ├── app.js              # Main application (7978 lines)
+│   └── package.json        # Dependencies
+├── monitoring/             # Monitoring configuration
+│   └── prometheus.yml      # Prometheus config
+├── Dockerfile              # Application container
+├── docker-compose.yml      # Multi-container setup
+├── render.yaml             # Render deployment config
+└── Jenkinsfile             # CI/CD pipeline (ready for implementation)
+```
+
+
+## Prerequisites
 - Docker & Docker Compose
 - Node.js 18+ (for local development)
 - Git
 
-### Installation
+## Installation
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/school-management-system.git
+   git clone https://github.com/sakib1133/school-management-system.git
    cd school-management-system
    ```
 
@@ -172,112 +205,6 @@ Distinct user experiences with secure permission management:
 - **Session Management**: Auto-refresh capability, expiry warnings, activity tracking
 - **MFA/2FA**: Multi-factor authentication for sensitive operations
 
-### 5. Integrated Monitoring Stack
-Production-ready observability with real-time metrics:
-- **Prometheus**: Metrics collection with configurable scrape intervals
-- **Grafana**: Interactive dashboards for visualization and analysis
-- **Node Exporter**: System-level metrics (CPU, memory, disk, network)
-- **Custom Metrics**: Application-specific metrics for business KPIs
-- **Alerting**: Configurable alerting rules for proactive monitoring
-- **Log Aggregation**: Centralized logging for all system events
-
-
-## 🔧 Development
-
-### Project Structure
-```
-├── App/                    # Main application directory
-│   ├── public/             # Frontend files
-│   │   ├── index.html      # Landing page
-│   │   ├── login.html      # Login page with chatbot
-│   │   ├── dashboard.html  # Admin dashboard
-│   │   ├── student/        # Student-specific pages
-│   │   ├── teacher/        # Teacher-specific pages
-│   │   ├── css/            # Stylesheets
-│   │   └── js/             # JavaScript modules
-│   ├── utils/              # Service modules
-│   │   ├── chatbotService.js        # Main chatbot logic
-│   │   ├── navigationChatbotService.js  # Navigation chatbot
-│   │   └── notificationService.js     # Security notifications
-│   ├── prompts/            # AI system prompts
-│   │   ├── admin.txt       # Admin chatbot prompt
-│   │   ├── teacher.txt     # Teacher chatbot prompt
-│   │   └── student.txt     # Student chatbot prompt
-│   ├── data/               # Database storage
-│   ├── logs/               # Application logs
-│   ├── uploads/            # File uploads
-│   ├── app.js              # Main application (7978 lines)
-│   └── package.json        # Dependencies
-├── monitoring/             # Monitoring configuration
-│   └── prometheus.yml      # Prometheus config
-├── Dockerfile              # Application container
-├── docker-compose.yml      # Multi-container setup
-├── render.yaml             # Render deployment config
-└── Jenkinsfile             # CI/CD pipeline (ready for implementation)
-```
-
-### Local Development
-```bash
-# Install dependencies
-cd App && npm install
-
-# Start development server
-npm start
-
-# Or with nodemon for auto-reload
-npm run dev
-```
-
-
-## 🌐 Deployment
-
-### Docker Deployment
-```bash
-# Start all services
-docker-compose up -d
-
-# Stop all services
-docker-compose down
-
-# View logs
-docker-compose logs -f app
-
-# Scale application (if needed)
-docker-compose up -d --scale app=2
-```
-
-### Render Deployment
-```bash
-# Push to GitHub repository
-git push origin main
-
-# Connect repository to Render
-# Configure environment variables in Render dashboard
-# Automatic deployment will trigger on push
-```
-
-
-## 🔒 Security Features
-
-### Authentication & Authorization
-- **JWT Authentication**: Role-based tokens with expiration
-- **Bcrypt Password Hashing**: Secure password storage
-- **MFA/2FA**: Multi-factor authentication for sensitive operations
-- **Role-Based Access Control**: Admin, Teacher, Student permissions
-
-### Protection Mechanisms
-- **IPS**: Brute-force protection with IP blocking
-- **ADS**: Anomaly detection for mass data fetch and rapid requests
-- **WAF**: SQL injection, XSS, and command injection detection
-- **Anti-Phishing**: Domain validation and suspicious pattern detection
-- **App Cloning Protection**: User-agent validation and signature verification
-
-### Data Security
-- **AES-256-CBC Encryption**: All sensitive data encrypted at rest
-- **Environment Variables**: Secure configuration management
-- **Security Headers**: Helmet.js for standard security headers
-- **CORS Protection**: Whitelisted origins only
-- **Rate Limiting**: Configurable rate limits per endpoint
 
 
 ## 🤝 Contributing
