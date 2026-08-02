@@ -1,4 +1,4 @@
-# 🎓 School Management System
+# 🎓 Secure School Management Portal
 
 A comprehensive, enterprise-grade school management portal with advanced security features, and complete fee management. This system demonstrates industry best practices in security architecture, role-based access control, and integrated monitoring.
 
