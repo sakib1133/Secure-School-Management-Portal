@@ -39,19 +39,17 @@ This project implements a full-featured school management system with:
 │  │  ┌──────────────────────────────────────────────┐   │    │
 │  │  │        Security Stack (Multi-Layer)          │   │    │
 │  │  │  WAF │ IPS │ Anti-Phishing │ App-Clone Guard │   │    │
-│  │  │  JWT │ AES-256 Encryption │ HTTPS/TLS       │   │    │
+│  │  │  JWT │ AES-256 Encryption │ HTTPS/TLS        │   │    │
 │  │  └──────────────────────────────────────────────┘   │    │
 │  │                                                     │    │
-│  │  ┌──────────────────────────────────────────────┐   │    │
-│  │  │          AI Chatbot Assistant                │   │    │
-│  │  │     NLP Engine │ Role-Based Responses        │   │    │
-│  │  └──────────────────────────────────────────────┘   │    │
+│  │                                                     │    │
+│  │                                                     │    │
 │  └─────────────────────────────────────────────────────┘    │
 │           │  metrics                  │  metrics            │
 │           ▼                           ▼                     │
 │  ┌──────────────┐           ┌──────────────────┐            │
 │  │ Node Exporter│           │   Prometheus     │            │
-│  │   :9100      │──────────▶│     :9090        │            │
+│  │   :9100      │──────────▶│     :9090       │            │
 │  └──────────────┘           └────────┬─────────┘            │
 │                                      │                      │
 │                                      ▼                      │
