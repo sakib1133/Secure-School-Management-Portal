@@ -8,7 +8,7 @@ A comprehensive, enterprise-grade school management portal with advanced securit
 ## 📋 Project Overview
 
 This project implements a full-featured school management system with:
-- **Role-Based Access Control** for Admin, Teacher, and Student users
+- **Role-Based Access Control** for Admin, Teacher, and Students
 - **Enterprise-Grade Security** with multi-layered protection mechanisms
 - **Complete Fee Management** with Razorpay integration and OTP verification
 - **Integrated Monitoring Stack** with Prometheus, Grafana, and Node Exporter
