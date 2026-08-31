@@ -75,7 +75,7 @@ This project implements a full-featured school management system with:
 - **HTML5/CSS3** - Modern responsive UI
 - **Vanilla JavaScript** - Client-side logic
 - **Font Awesome** - Icon library
-- **Material Icons** - Google Material Design icons
+
 
 ### Security
 - **Helmet.js** - Security headers
