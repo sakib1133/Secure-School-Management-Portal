@@ -175,7 +175,7 @@ This project implements a full-featured school management system with:
 
 ### 1. Enterprise-Grade Security
 Multi-layered protection system with defense-in-depth approach:
-- **IPS (Intrusion Prevention System)**: Brute-force protection with IP blocking after 5 failed attempts (15min block duration)
+- **IPS (Intrusion Prevention System)**: Brute-force protection with IP blocking after 3 failed attempts (10 min block duration)
 - **ADS (Anomaly Detection System)**: Detects mass data fetch (>50 records), rapid requests (>10/min), and bulk operations
 - **WAF (Web Application Firewall)**: SQL injection, XSS, and command injection detection with regex patterns
 - **Anti-Phishing**: Domain validation, origin/referer checking, suspicious pattern detection
