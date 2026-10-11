@@ -169,7 +169,7 @@ This project implements a full-featured school management system with:
 
 5. **Default Credentials**
 - **Admin**: Username: `admin`, Password: admin@321/admin@123
-- **Teacher/Student**: Make your own udner stundent/teacher management after    admin login
+- **Teacher/Student**: Make your own under stundent/teacher management after    admin login
 
 ## � Key Strengths
 
